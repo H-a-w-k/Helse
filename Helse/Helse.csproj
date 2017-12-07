@@ -3,6 +3,9 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\Helse20171207073216 - Web Deploy.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
   </ItemGroup>
   <ItemGroup>
@@ -11,5 +14,8 @@
   <ItemGroup>
     <None Include="wwwroot\app\app.js" />
     <None Include="wwwroot\app\appController.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 </Project>
