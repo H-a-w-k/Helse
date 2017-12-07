@@ -15,16 +15,23 @@
             </p>
         </div>
 
-        <div>
-            <ng-map on-click="click()" center="[40.74, -74.18]"></ng-map>
+        <div class="container-map">
+            <ng-map on-click="click()" center="[59.91717182572497, 10.752182006835938]" zoom="10"></ng-map>
         </div>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-12" ng-repeat="item in stations">
+        <table class="table table-bordered table-striped" ng-if="stations.length > 0">
+            <tr>
+                <th class="col-xs-8">Navn</th>
+                <th class="col-xs-4">Telefon</th>
+            </tr>
+            <tr ng-repeat="item in stations">
+                <td>
                     {{item.Name}}
-                </div>
-            </div>
-        </div>
+                </td>
+                <td class="text-right">
+                    {{item.Phone}}
+                </td>
+            </tr>
+        </table>
     </div>
 </div>

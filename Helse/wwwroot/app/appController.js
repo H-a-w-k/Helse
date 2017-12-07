@@ -8,10 +8,30 @@ app.controller("appController",
             healthFactory,
             NgMap) {
 
-            $scope.click = function (response) {
+            var vm = this;
+            NgMap.getMap().then(function (map) {
+                vm.map = map;
+            });
 
-                var latitude = response.latLng.lat();
-                var longitude = response.latLng.lat();
+            var marker;
+
+            $scope.click = function (res) {
+
+                var latitude = res.latLng.lat();
+                var longitude = res.latLng.lng();
+
+                console.log(latitude, longitude);
+
+                if (marker) {
+                    marker.setMap(null);
+                }
+
+                marker = new google.maps.Marker({
+                    position: res.latLng,
+                    map:  vm.map,
+                    draggable: false,
+                    animation: google.maps.Animation.DROP
+                });
 
                 healthFactory.getStations(latitude, longitude)
                     .then(
