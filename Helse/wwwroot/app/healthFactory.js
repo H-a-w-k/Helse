@@ -13,19 +13,12 @@
              */
             function getStations(latitude, longitude) {
 
-                var url = "http://data.helsenorge.no/healthservices?$top=10" +
-                    "&latitude=" + latitude + "&longitude=" + longitude;
-
-                return 
-
-                return  $http.get(url);
+                var url = "api/app?latitude=" + latitude + "&longitude=" + longitude;
 
                 return $http(
                     {
                         method: "GET",
-                        url: url,
-                        headers: {
-                        }
+                        url: url
                     }
                 );
             }
@@ -36,7 +29,7 @@
             }
 
             return {
-                getStations: getStationsDummy
+                getStations: getStations
             }
         }]
 );

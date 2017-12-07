@@ -20,24 +20,29 @@ app.controller("appController",
                 var latitude = res.latLng.lat();
                 var longitude = res.latLng.lng();
 
-                console.log(latitude, longitude);
-
                 if (marker) {
                     marker.setMap(null);
                 }
 
                 marker = new google.maps.Marker({
                     position: res.latLng,
-                    map:  vm.map,
+                    map: vm.map,
                     draggable: false,
                     animation: google.maps.Animation.DROP
                 });
 
+                $scope.stations = [];
+                $scope.loadingStations = true;
+                $scope.noStations = false;
                 healthFactory.getStations(latitude, longitude)
                     .then(
                     function (stations) {
-                        console.log(stations);
                         $scope.stations = stations;
+                        $scope.noStations = stations.length === 0;
+                    })
+                    .finally(
+                    function () {
+                        $scope.loadingStations = false;
                     });
             }
         }]
